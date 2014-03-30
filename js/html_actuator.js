@@ -27,10 +27,8 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
     if (metadata.terminated) {
       if (metadata.over) {
         self.message(false); // You lose
-	ga('send', 'event', 'Igra', 'Poraz', 'rezultat', this.score);
       } else if (metadata.won) {
         self.message(true); // You win!
-	ga('send', 'event', 'Igra', 'Pobjeda', 'rezultat', this.score);
       }
     }
 
@@ -129,6 +127,8 @@ HTMLActuator.prototype.updateBestScore = function (bestScore) {
 HTMLActuator.prototype.message = function (won) {
   var type    = won ? "game-won" : "game-over";
   var message = won ? "Pobjeda!" : "Kraj igre!";
+
+  ga('send', 'event', 'EndGame', type, 'score', this.score);
 
   this.messageContainer.classList.add(type);
   this.messageContainer.getElementsByTagName("p")[0].textContent = message;
