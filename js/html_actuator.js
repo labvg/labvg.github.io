@@ -27,10 +27,10 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
     if (metadata.terminated) {
       if (metadata.over) {
         self.message(false); // You lose
-	_gaq.push(['_trackEvent', 'Poraz', this.score]);
+	ga('send', 'event', 'Igra', 'Poraz', 'rezultat', this.score);
       } else if (metadata.won) {
         self.message(true); // You win!
-	_gaq.push(['_trackEvent', 'Pobjeda', this.score]);
+	ga('send', 'event', 'Igra', 'Pobjeda', 'rezultat', this.score);
       }
     }
 
