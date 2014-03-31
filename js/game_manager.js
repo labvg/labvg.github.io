@@ -181,7 +181,7 @@ GameManager.prototype.move = function (direction) {
           moved = true; // The tile moved from its original cell!
         }
       }
-    });
+    })
   });
 
   if (moved) {
