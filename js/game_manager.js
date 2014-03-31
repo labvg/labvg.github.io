@@ -189,6 +189,7 @@ GameManager.prototype.move = function (direction) {
     this.addRandomTile();
 
     if (!this.movesAvailable()) {
+      ga('send','event','Home','end_game','over', this.score);
       this.over = true; // Game over!
     }
 
