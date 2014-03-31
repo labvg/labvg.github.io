@@ -190,7 +190,7 @@ GameManager.prototype.move = function (direction) {
 
     if (!this.movesAvailable()) {
       this.over = true; // Game over!
-      ga('send', 'event', 'Home', 'end game', 'game over', self.score);
+      ga('send', 'event', 'Home', 'end game', 'game over', this.score);
     }
 
     this.actuate();
