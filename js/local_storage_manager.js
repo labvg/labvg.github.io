@@ -45,6 +45,7 @@ LocalStorageManager.prototype.getBestScore = function () {
 };
 
 LocalStorageManager.prototype.setBestScore = function (score) {
+  ga('send','event','Home','best','score', score);
   this.storage.setItem(this.bestScoreKey, score);
 };
 
