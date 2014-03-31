@@ -171,7 +171,8 @@ GameManager.prototype.move = function (direction) {
           self.score += merged.value;
 
           // The mighty 2048 tile
-          if (merged.value === 2048) self.won = true;
+          if (merged.value === 2048) { self.won = true;
+	       ga.send('send', 'event', 'Home', 'end_game', 'win game', self.score);
         } else {
           self.moveTile(tile, positions.farthest);
         }
@@ -188,6 +189,7 @@ GameManager.prototype.move = function (direction) {
 
     if (!this.movesAvailable()) {
       this.over = true; // Game over!
+      ga.send('send', 'event', 'Home', 'end game', 'game over', self.score);
     }
 
     this.actuate();
