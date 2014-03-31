@@ -47,7 +47,6 @@ GameManager.prototype.setup = function () {
     this.over        = previousState.over;
     this.won         = previousState.won;
     this.keepPlaying = previousState.keepPlaying;
-    ga('send','event','Home','next_game', 'score', previousState.score);
   } else {
     this.grid        = new Grid(this.size);
     this.score       = 0;
@@ -88,6 +87,7 @@ GameManager.prototype.actuate = function () {
 
   // Clear the state when the game is over (game over only, not win)
   if (this.over) {
+    ga('send','event','Home','game-over','score', this.score);
     this.storageManager.clearGameState();
   } else {
     this.storageManager.setGameState(this.serialize());
